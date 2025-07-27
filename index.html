@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Standard – Automatización Empresarial">
+    <meta property="og:description" content="Reducimos 40% tu personal administrativo con IA y Google Workspace">
+    <meta property="og:image" content="assets/images/tu-caratula.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Standard - Consultoría en Automatización Empresarial</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.3rem;
+            transition: all 0.3s ease;
+            padding: 0.4rem 0.8rem !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Ajustado según la altura real del navbar */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .lead {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--accent-color), #059669);
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary-color);
+            border-color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Cards */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Process Section */
+        .process-step {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .process-step h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Results Section */
+        .results-bg {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .result-item {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info:hover .contact-icon {
+            background: white;
+        }
+
+        .contact-info:hover .contact-icon i {
+            color: var(--accent-color);
+        }
+
+        .contact-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .lead {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn-outline-custom {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .service-card {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+.floating-logo {
+  width: 60rem;
+  max-width: 100%;
+  opacity: 0.5;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Para pantallas grandes (1200px en adelante) */
+@media (min-width: 1200px) {
+  .floating-logo {
+    width: 80rem;
+  }
+}
+
+/* Para celulares: achicar y suavizar */
+@media (max-width: 767px) {
+  .floating-logo {
+    width: 100%;
+    max-width: 280px;
+    opacity: 0.3;
+    margin-top: 2rem;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-chart-bar me-2"></i>Standard
+            </a>
+            
+           <button class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav"
+                    aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proceso">Proceso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resultados">Resultados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-content">
+                            <h1 class="fade-in">Procesos complejos. Resultados impecables.</h1>
+                                <p class="lead fade-in">
+                                    Identificamos tus cuellos de botella, los transformamos en flujos automáticos y dejamos a tu equipo 100% preparado para operar sin fricciones ni dependencias.<br>
+                                    En <i class="fas fa-chart-bar me-1"></i> <b>Standard</b>, la eficiencia no es promesa ni excepción: es el mínimo aceptable.
+                                </p>
+                        <div class="fade-in">
+                            <a href="#contacto" class="btn-primary-custom">
+                                <i class="fas fa-rocket me-2"></i>Agenda una Demo
+                            </a>
+                            <a href="#servicios" class="btn-outline-custom">
+                                <i class="fas fa-play me-2"></i>Ver Casos de Uso
+                            </a>
+                        </div>
+                        
+                        <div class="hero-stats fade-in">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="stat-item">
+                                        <span class="stat-number">40%</span>
+                                        <span>Liberación de carga operativa</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stat-item">
+                                        <span class="stat-number">3-4</span>
+                                        <span>Meses de Implementación</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="stat-item">
+                                        <span class="stat-number">100%</span>
+                                        <span>Transferencia de Conocimiento</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="">
+                        <img 
+                            src="assets/images/pexels-mikael-blomkvist-6476589.jpg"  
+                            alt="Logo Standard – procesos infinitos" 
+                            class="floating-logo"
+                        />
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title fade-in">Nuestras Especializaciones</h2>
+                    <p class="section-subtitle fade-in">Atacamos los cuellos de botella más críticos de tu operación con automatizaciones a medida que generan impacto real.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Accesos sin riesgo, auditorías sin estrés</h4>
+                        <p> Centralizamos, auditamos y automatizamos la gestión de accesos en tu entorno digital. Sin sorpresas, sin olvidos..</p>
+                        <ul class="service-features">
+                            <li>Mapeo completo de permisos en Google Drive</li>
+                            <li>Revocación masiva con un clic</li>
+                            <li>Alertas automáticas por MFA y contraseñas débiles</li>
+                            <li>Dashboards de cumplimiento normativo</li>
+                            <li>Reportes accionables y auditables</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h4>Tu operación, en piloto automático</h4>
+                        <p> Automatizamos tareas críticas como stock, órdenes y reportes para liberar tiempo, reducir errores y escalar sin fricciones.</p>
+                        <ul class="service-features">
+                                <li>Carga y actualización automática de inventario</li>
+                                <li>Procesamiento de órdenes sin intervención humana</li>
+                                <li>Reportes dinámicos para equipos comerciales</li>
+                                <li>Integraciones entre plataformas (API, SFTP)</li>
+                                <li>Sincronización fluida de datos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Asistentes que piensan como vos</h4>
+                        <p>Desarrollamos smartbots conectados a tus datos para responder preguntas, generar reportes y anticipar necesidades.</p>
+                        <ul class="service-features">
+                            <li>Consultas en lenguaje natural sobre tus datos</li>
+                            <li>Integración directa con Slack, Teams y WhatsApp</li>
+                            <li>Dashboards y respuestas en tiempo real</li>
+                            <li>Alertas proactivas automáticas</li>
+                            <li>Zero dependencia: tu equipo los puede manejar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proceso" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title fade-in">Nuestro Proceso de Transferencia</h2>
+                    <p class="section-subtitle fade-in">
+                        No solo implementamos automatizaciones. Las dejamos andando, documentadas y en manos de tu equipo. Así trabajamos:
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step fade-in">
+                        <div class="process-number">1</div>
+                        <h5>Assessment & Design</h5>
+                        <p>
+                            Auditamos tu operación, detectamos cuellos de botella y diseñamos un sistema que elimine lo innecesario y escale con vos.
+                        </p>
+                        <small class="text-muted">Duración: 3-4 semanas</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step fade-in">
+                        <div class="process-number">2</div>
+                        <h5>Desarrollo & Testing</h5>
+                        <p>
+                            Desarrollamos automatizaciones a medida con pruebas exhaustivas. Todo ocurre en segundo plano sin interrumpir tu día a día.
+                        </p>
+                        <small>Duración: 4-6 semanas</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step fade-in">
+                        <div class="process-number">3</div>
+                            <h5>Implementación Conjunta</h5>
+                        <p>
+                            Activamos cada solución junto a tu equipo, en tu entorno real, para que todo funcione desde el día uno sin sorpresas.
+                        </p>
+                        <small>Duración: 3–4 semanas</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-step fade-in">
+                        <div class="process-number">4</div>
+                        <h5>Transferencia & Training</h5>
+                            <p>
+                                Capacitamos a tu equipo, entregamos la documentación y nos aseguramos de que puedan operar sin depender de nosotros.
+                            </p>
+                            <small>Duración: 2–3 semanas</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultados" class="section results-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title text-white fade-in">Resultados Comprobados</h2>
+                    <p class="section-subtitle text-white-50 fade-in">Casos reales de automatización implementados en empresas argentinas</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="result-item fade-in">
+                        <span class="result-number">2hrs</span>
+                        <p class="result-text">vs 2 semanas para auditorías completas de permisos</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="result-item fade-in">
+                        <span class="result-number">85%</span>
+                        <p class="result-text">Reducción en tiempo de generación de reportes</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="result-item fade-in">
+                        <span class="result-number">0</span>
+                        <p class="result-text">Errores manuales en carga de stock y procesamiento</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="result-item fade-in">
+                        <span class="result-number">24/7</span>
+                        <p class="result-text">Monitoreo automático sin intervención humana</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <div class="fade-in">
+                        <h4 class="text-white mb-4">¿Listo para automatizar tu operación?</h4>
+                        <a href="#contacto" class="btn-primary-custom">
+                            <i class="fas fa-calendar-alt me-2"></i>Agenda una Consulta Gratuita
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title fade-in">Hablemos de tu Proyecto</h2>
+                    <p class="section-subtitle fade-in">Te mostramos en 30 minutos cómo automatizar tus procesos más críticos</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card fade-in">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-info">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Sergio Caracciolo</h5>
+                                        <p class="mb-0 text-muted">Founder & Lead Automation Engineer</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Teléfono</h6>
+                                        <p class="mb-0">+54 11 6014-9350</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-1">Email</h6>
+                                        <p class="mb-0">sergio@standardops.com.ar</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h4 class="mb-4">¿Qué vas a obtener?</h4>
+                                <ul class="service-features">
+                                    <li>Análisis gratuito de tus procesos actuales</li>
+                                    <li>Identificación de oportunidades de automatización</li>
+                                    <li>Demo personalizada con tus datos reales</li>
+                                    <li>Estimación de ROI y timeline de implementación</li>
+                                    <li>Visualización de datos con Looker Studio</li>
+                                    <li>Plan de transferencia de conocimiento</li>
+                                </ul>
+                                
+                                <div class="mt-4">
+                                    <a href="https://wa.me/5491160149350?text=Hola%20Sergio,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20Standard" 
+                                       class="btn-primary-custom" target="_blank">
+                                        <i class="fab fa-whatsapp me-2"></i>Contactar por WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5><i class="fas fa-chart-bar me-2"></i>Standard</h5>
+                    <p class="text-white-50">Especialistas en automatización empresarial con Google Workspace, APIs e Inteligencia Artificial.</p>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5>Servicios</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#servicios">Governance & Security</a></li>
+                        <li><a href="#servicios">Operations Flow</a></li>
+                        <li><a href="#servicios">Smart Agents</a></li>
+                        <li><a href="#proceso">Consultoría de Transferencia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5>Contacto</h5>
+                    <p class="text-white-50">
+                        <i class="fas fa-phone me-2"></i>+54 11 6014-9350<br>
+                        <i class="fas fa-envelope me-2"></i>sergio@standardops.com.ar<br>
+                        <i class="fas fa-map-marker-alt me-2"></i>Buenos Aires, Argentina
+                    </p>
+                </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-white-50">&copy; 2025 Standard. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-white-50">Powered by Sergio Caracciolo</p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Auto-type effect for hero title (optional enhancement)
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                // Add a subtle pulse effect to the hero stats
+                const stats = document.querySelectorAll('.stat-number');
+                stats.forEach((stat, index) => {
+                    setTimeout(() => {
+                        stat.style.animation = 'pulse 0.6s ease-in-out';
+                    }, index * 200);
+                });
+            }
+        });
+
+        // Add pulse animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
